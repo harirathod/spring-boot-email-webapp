@@ -3,16 +3,28 @@ package com.web.webapp;
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
- * Class for sending emails between users.
+ * Class for sending emails between users. If the email service requires two-factor authentication, the user
+ * should use an 'app password' (like <a href="https://myaccount.google.com/apppasswords">Google app password</a> for Gmail, or a Microsoft app password for Outlook).
  */
 public class EmailService
 {
-    public static void main(String[] args) throws MessagingException {
-
-
+    /**
+     * Sends an email. Combines getMessageForSession, prepareMessageSenders, addMessageContent, and
+     * sendMessage into one method.
+     * @param properties The map containing a list of properties. The valid properties are [host, port, from, to, subject, content, username, password].
+     * @throws MessagingException If there was a problem sending the email.
+     */
+    public static void sendEmail(Map<String, String> properties) throws MessagingException
+    {
+        Message m = EmailService.getMessageForSession(properties.get("host"), properties.get("port"));
+        EmailService.prepareMessageSenders(m, properties.get("from"), properties.get("to"));
+        EmailService.addMessageContent(m, properties.get("subject"), properties.get("content"));
+        EmailService.sendMessage(m, properties.get("username"), properties.get("password"));
     }
 
     /**
@@ -57,7 +69,7 @@ public class EmailService
         message.setSubject(subject);
         // Create a body part with the text.
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
-        mimeBodyPart.setText(content);
+        mimeBodyPart.setContent(content, "text/html; charset=utf-8");
 
         // Create a multipart as a container for the body part, and add the multipart to the message.
         Multipart multipart = new MimeMultipart(mimeBodyPart);
