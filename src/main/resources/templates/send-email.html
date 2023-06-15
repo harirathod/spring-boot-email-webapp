@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Email Service</title>
@@ -10,7 +9,7 @@
         <h1>Welcome to our email service!</h1>
         <p>With this service, you can send basic HTML emails.</p>
         <form action="#" th:action="@{/sendEmail}" method="post" th:object="${email}">
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column; gap: 16px">
                 <div style="display: flex; justify-content:space-between;">
                     <label>From:</label>
                     <input type="email" th:field="${email.from}">
