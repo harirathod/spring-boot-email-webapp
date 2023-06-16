@@ -1,0 +1,52 @@
+:root {
+    background-color: #FAFAF5;
+}
+
+* {
+    font-family: system-ui;
+}
+
+.form {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-field-container {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+input {
+    outline: none;
+    transition: 0.3s;
+}
+
+.clickable {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.clickable:focus {
+    border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.submit-button {
+    align-self: flex-end;
+    background-color: #FAFAF5;
+}
+
+.submit-button:hover {
+    background-color: #fafacd;
+}
+
+.error {
+    font-weight: bold;
+    font-size: 75%;
+    color: #B4391D;
+    border-bottom: 2px solid #B4391D;
+    padding: 5px;
+}
