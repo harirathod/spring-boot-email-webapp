@@ -2,34 +2,39 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Email Service</title>
+    <title th:text="#{app.name}"></title>
+    <link rel="stylesheet" href="/email-sheet.css">
 </head>
 <body>
-    <div style="display:flex; flex-direction: column; align-items: center; font-family: system-ui;">
-        <h1>Welcome to our email service!</h1>
-        <p>With this service, you can send basic HTML emails.</p>
-        <form action="#" th:action="@{/sendEmail}" method="post" th:object="${email}">
-            <div style="display: flex; flex-direction: column; gap: 8px">
-                <div style="display: flex; justify-content:space-between;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <h1 th:text="#{email.welcome}"></h1>
+        <p th:text="#{email.description}"></p>
+        <form class="form" action="#" th:action="@{/sendEmail}" method="post" th:object="${email}">
+            <div>
+                <div class="form-field-container">
                     <label>From:</label>
-                    <input type="email" th:field="${email.from}">
+                    <input class="clickable" type="text" th:field="${email.from}">
                 </div>
-                    <br>
-                <div style="display: flex; justify-content:space-between; ">
-                    <label>To:</label>
-                    <input type="email" th:field="${email.to}">
-                </div>
-                    <br>
-                <div style="display: flex; justify-content:space-between; gap: 30px;">
-                    <label>Content:</label>
-                    <input type="text" th:field="${email.content}">
-                </div>
-
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
+                <div th:errorclass="error" th:if="${#fields.hasErrors('from')}" th:errors="${email.from}"></div>
             </div>
+            <div>
+                <div class="form-field-container">
+                    <label>To:</label>
+                    <input class="clickable" type="text" th:field="${email.to}">
+                </div>
+                <div th:errorclass="error" th:if="${#fields.hasErrors('to')}" th:errors="${email.to}"></div>
+            </div>
+            <div>
+                <div class="form-field-container" style="gap: 30px;">
+                    <label>Content:</label>
+                    <input class="clickable" type="text" th:field="*{content}" />
+                </div>
+                 <div th:errorclass="error" th:if="${#fields.hasErrors('content')}" th:errors="${email.content}"></div>
+            </div>
+            <button class="submit-button clickable" type="submit">Submit</button>
         </form>
+<!--        <p th:text="${date}"></p>-->
     </div>
+
 </body>
 </html>
