@@ -1,43 +1,56 @@
 package com.web.webapp;
 
+import jakarta.validation.constraints.NotBlank;
 
-import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Email
 {
-    @NotNull(message = "Sender is required.")
+    // We have to use the full path name for @Email, as the containing class is also called Email.
+    @NotBlank(message = "Cannot be blank.")
+    @jakarta.validation.constraints.Email(message = "Must be an email.")
     private String from;
 
-    @NotNull(message = "Recipients are required.")
+    @NotBlank(message = "Cannot be blank.")
+    @jakarta.validation.constraints.Email(message = "Must be an email.")
     private String to;
 
+    @NotBlank(message = "Content of the email cannot be empty.")
     private String content;
 
-    public String getFrom() {
+    public String getFrom()
+    {
         return from;
     }
 
-    public String getTo() {
+    public String getTo()
+    {
         return to;
     }
 
-    public String getContent() {
+    public String getContent()
+    {
         return content;
     }
 
-    public void setTo(String to) {
+    public void setTo(String to)
+    {
         this.to = to;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(String from)
+    {
         this.from = from;
     }
 
-    public void setContent(String content) {
+    public void setContent(String content)
+    {
         this.content = content;
     }
 
-    public String toString() {
+    public String toString()
+    {
         return "From: " + from + "\n"
                 + "To: " + to + "\n"
                 + "Content: " + content;
