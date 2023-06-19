@@ -1,5 +1,6 @@
 package com.web.webapp;
 
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.text.DateFormat;
-import java.util.Date;
 
-
+/**
+ * Class that displays the email form and sends the email when the user accesses the webpage located at [domain]/sendEmail.
+ * @version 2023.06.19
+ * @author hari_rathod
+ */
 @Controller
 public class EmailController
 {
@@ -29,7 +32,12 @@ public class EmailController
         if (errors.hasErrors()) {
             return "send-Email";
         }
-        // TODO: Otherwise if no errors, EmailService.sendEmail(email).
+
+        try {
+            EmailService.sendEmail(email);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
         return "redirect:/";
     }
 }
