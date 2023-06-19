@@ -25,7 +25,6 @@
     box-sizing: border-box;
     padding: 4px;
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
 }
 
@@ -53,6 +52,7 @@ input, textarea {
     transition: 0.3s;
     resize: vertical;
 }
+
 
 .clickable {
     border: 2px solid rgba(0, 0, 0, 0.3);
@@ -83,4 +83,42 @@ input, textarea {
 
 .error-input {
     background-color: #efc5cc99;
+}
+
+.tooltip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.tooltip .tooltip-tr::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+.tooltip-tr {
+    width: 100px;
+    text-align: center;
+    visibility: hidden;
+    background-color: black;
+    border-radius: 8px;
+    color: #FAFAF5;
+    padding: 5px;
+    font-size: 12px;
+    position: absolute;
+    left: 110%;
+    bottom: -100%;
+    opacity: 0;
+    transition: opacity 3s;
+}
+
+.tooltip:hover .tooltip-tr {
+    visibility: visible;
+    opacity: 1;
 }

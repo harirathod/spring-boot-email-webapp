@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title th:text="#{app.name}"></title>
     <link rel="stylesheet" href="/email-sheet.css">
+    <link rel="icon" href="/paper-plane-regular.svg">
 </head>
 <body>
     <div class="vert-ctnr">
@@ -54,7 +55,10 @@
                 <div class="vert-ctnr">
                     <div class="form-row">
                         <label>Password:</label>
-                        <input th:errorclass="error-input" type="password" class="clickable" th:field="*{password}">
+                        <div class="tooltip">
+                            <input th:errorclass="error-input" type="password" class="clickable" th:field="*{password}">
+                            <span class="tooltip-tr" th:text="#{email.password.tooltip}"></span>
+                        </div>
                     </div>
                     <div th:errorclass="error" th:if="${#fields.hasErrors('password')}" th:errors="${email.password}"></div>
                 </div>

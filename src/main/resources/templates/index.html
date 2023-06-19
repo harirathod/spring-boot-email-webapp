@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title th:text="#{app.name}"></title>
     <link href="/email-sheet.css" rel="stylesheet">
+    <link rel="icon" href="/user-regular.svg">
 </head>
 <body>
-    <h2 th:text="#{welcome.message}"></h2>
-    <p th:text="#{welcome.description}"></p>
-    <a th:href="#{email.link}">Email Service</a>
+    <div class="vert-ctnr">
+        <h2 th:text="#{welcome.message}"></h2>
+        <p th:text="#{welcome.description}"></p>
+        <a th:href="#{email.link}">Email Service</a>
+    </div>
 </body>
 </html>
