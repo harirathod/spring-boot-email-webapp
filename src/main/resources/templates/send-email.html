@@ -6,34 +6,79 @@
     <link rel="stylesheet" href="/email-sheet.css">
 </head>
 <body>
-    <div style="display: flex; flex-direction: column; align-items: center;">
-        <h1 th:text="#{email.welcome}"></h1>
-        <p th:text="#{email.description}"></p>
-        <form class="form" action="#" th:action="@{/sendEmail}" method="post" th:object="${email}">
-            <div>
-                <div class="form-field-container">
-                    <label>From:</label>
-                    <input class="clickable" type="text" th:field="${email.from}">
+    <div class="vert-ctnr">
+        <h1 th:text="#{email.welcome}">Welcome</h1>
+        <p th:text="#{email.description}">Email Service</p>
+        <form action="#" th:action="@{/sendEmail}" method="post" th:object="${email}">
+            <div class="horiz-ctnr">
+                <div class="vert-ctnr">
+                    <div class="form-row">
+                        <label>From:</label>
+                        <input th:errorclass="error-input" class="clickable" type="text" th:field="${email.from}">
+                    </div>
+                    <div th:errorclass="error" th:if="${#fields.hasErrors('from')}" th:errors="${email.from}"></div>
                 </div>
-                <div th:errorclass="error" th:if="${#fields.hasErrors('from')}" th:errors="${email.from}"></div>
-            </div>
-            <div>
-                <div class="form-field-container">
-                    <label>To:</label>
-                    <input class="clickable" type="text" th:field="${email.to}">
+                <div class="vert-ctnr">
+                    <div class="form-row">
+                        <label>To:</label>
+                        <input th:errorclass="error-input" class="clickable" type="text" th:field="${email.to}">
+                    </div>
+                    <div th:errorclass="error" th:if="${#fields.hasErrors('to')}" th:errors="${email.to}"></div>
                 </div>
-                <div th:errorclass="error" th:if="${#fields.hasErrors('to')}" th:errors="${email.to}"></div>
             </div>
-            <div>
-                <div class="form-field-container" style="gap: 30px;">
+
+            <div class="horiz-ctnr">
+                <div class="vert-ctnr">
+                    <div class="form-row">
+                        <label>Host:</label>
+                        <input th:errorclass="error-input" class="clickable" th:field="*{host}">
+                    </div>
+                    <div th:errorclass="error" th:if="${#fields.hasErrors('host')}" th:errors="${email.host}"></div>
+                </div>
+                <div class="vert-ctnr">
+                    <div class="form-row">
+                        <label>Port:</label>
+                        <input th:errorclass="error-input" class="clickable" th:field="*{port}">
+                    </div>
+                    <div th:errorclass="error" th:if="${#fields.hasErrors('port')}" th:errors="${email.port}"></div>
+                </div>
+            </div>
+            <div class="horiz-ctnr">
+                <div class="vert-ctnr">
+                    <div class="form-row">
+                        <label>Username:</label>
+                        <input th:errorclass="error-input" class="clickable" th:field="*{username}">
+                    </div>
+                    <div th:errorclass="error" th:if="${#fields.hasErrors('username')}" th:errors="${email.username}"></div>
+                </div>
+                <div class="vert-ctnr">
+                    <div class="form-row">
+                        <label>Password:</label>
+                        <input th:errorclass="error-input" type="password" class="clickable" th:field="*{password}">
+                    </div>
+                    <div th:errorclass="error" th:if="${#fields.hasErrors('password')}" th:errors="${email.password}"></div>
+                </div>
+            </div>
+
+            <div class="vert-ctnr">
+                <div class="form-row">
+                    <label>Subject:</label>
+                    <input th:errorclass="error-input" class="clickable" th:field="${email.subject}">
+                </div>
+                <div th:errorclass="error" th:if="${#fields.hasErrors('subject')}" th:errors="${email.subject}"></div>
+            </div>
+
+            <div class="vert-ctnr">
+                <div class="form-row">
                     <label>Content:</label>
-                    <input class="clickable" type="text" th:field="*{content}" />
+                    <textarea th:errorclass="error-input" class="clickable" th:field="*{content}"></textarea>
                 </div>
-                 <div th:errorclass="error" th:if="${#fields.hasErrors('content')}" th:errors="${email.content}"></div>
+                <div th:errorclass="error" th:if="${#fields.hasErrors('content')}" th:errors="${email.content}"></div>
             </div>
+
+
             <button class="submit-button clickable" type="submit">Submit</button>
         </form>
-<!--        <p th:text="${date}"></p>-->
     </div>
 
 </body>

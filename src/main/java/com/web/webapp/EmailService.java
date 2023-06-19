@@ -16,15 +16,15 @@ public class EmailService
     /**
      * Sends an email. Combines getMessageForSession, prepareMessageSenders, addMessageContent, and
      * sendMessage into one method.
-     * @param properties The map containing a list of properties. The valid properties are [host, port, from, to, subject, content, username, password].
+     * @param email The email object containing a list of properties. The properties that should be defined in the email are are [host, port, from, to, subject, content, username, password].
      * @throws MessagingException If there was a problem sending the email.
      */
-    public static void sendEmail(Map<String, String> properties) throws MessagingException
+    public static void sendEmail(Email email) throws MessagingException
     {
-        Message m = EmailService.getMessageForSession(properties.get("host"), properties.get("port"));
-        EmailService.prepareMessageSenders(m, properties.get("from"), properties.get("to"));
-        EmailService.addMessageContent(m, properties.get("subject"), properties.get("content"));
-        EmailService.sendMessage(m, properties.get("username"), properties.get("password"));
+        Message m = EmailService.getMessageForSession(email.getHost(), email.getPort());
+        EmailService.prepareMessageSenders(m, email.getFrom(), email.getTo());
+        EmailService.addMessageContent(m, email.getSubject(), email.getContent());
+        EmailService.sendMessage(m, email.getUsername(), email.getPassword());
     }
 
     /**
