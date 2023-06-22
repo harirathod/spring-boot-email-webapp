@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class EmailController
 {
+    /**
+     * Returns the HTML page 'send-email' when the url request for '/sendEmail' is made.
+     * @param model The model.
+     * @return The HTML page titled 'send-email'.
+     */
     @GetMapping("/sendEmail")
     public String displayEmailForm(Model model)
     {
@@ -25,18 +30,24 @@ public class EmailController
         return "send-email";
     }
 
+    /**
+     * When the form at /sendEmail is posted, this method receives it, and send the received email.
+     * @param email The email to be sent.
+     * @param errors Any errors associated with the email's validity.
+     * @param model The model storing the email,
+     * @return The HTML home page if the email was correctly send, otherwise, returns the 'send-email- homepage.
+     * @throws MessagingException If there was an error in sending the email.
+     */
     @PostMapping("/sendEmail")
-    public String sendEmail(@Valid @ModelAttribute("email") Email email, BindingResult errors, Model model)
-    {
+    public String sendEmail(@Valid @ModelAttribute("email") Email email, BindingResult errors, Model model) throws MessagingException {
         // If there were any errors, do not send the email. Display the email form again.
         if (errors.hasErrors()) {
             return "send-Email";
         }
-
         try {
             EmailService.sendEmail(email);
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            throw new MessagingException("There was an issue with sending your email. Were the parameters valid?");
         }
         return "redirect:/";
     }
