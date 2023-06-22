@@ -1,0 +1,60 @@
+:root {
+    background-color: #FAFAF5;
+}
+
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.vert-ctnr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.full-size {
+    height: 50vh;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 16px;
+}
+
+.error-num {
+    color: #fc941c;
+    font-size: 8em;
+    font-weight: bolder;
+
+}
+
+.error-heading {
+    margin: 10px 0 0 0;
+    color: #fc941c;
+    text-align: center;
+}
+
+.error-url {
+    margin-top: 30px;
+}
+
+.error-url::before {
+    content: "The error happened at: ";
+    font-weight: normal;
+}
+
+.error-img {
+    position: fixed;
+    max-height: 90vh;
+    top: 0;
+    z-index: -1;
+    opacity: 0.03;
+}
+
+a {
+    font-weight: 600;
+    color: black;
+}

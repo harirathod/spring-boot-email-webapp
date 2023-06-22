@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" href="/error-sheet.css">
+    <link rel="icon" href="/xmark-solid.svg">
+</head>
+<body>
+    <div class="vert-ctnr full-size">
+        <div class="error-num" th:text="${httpstatus}"></div>
+        <h3 class="error-heading" th:text="${exception}"></h3>
+
+        <div class="error-url">
+            <a th:text="${url}" th:href="${url}"></a>
+        </div>
+        <img th:src="${img}" class="error-img">
+    </div>
+</body>
+</html>
