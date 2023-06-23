@@ -122,3 +122,28 @@ input, textarea {
     visibility: visible;
     opacity: 1;
 }
+
+.link {
+    color: black;
+    font-weight: 600;
+}
+
+.header-ctnr {
+    display: grid;
+    align-items: center;
+
+    grid-template-columns: repeat(12, 1fr) ;
+    width: 90vw;
+}
+.home-btn {
+    grid-column-end: 13;
+    background: none;
+    cursor: pointer;
+    width: 25px;
+}
+
+.header {
+    grid-column-start: 4;
+    grid-column-end: span 6;
+    text-align: center;
+}
