@@ -5,16 +5,19 @@
     <title>Error</title>
     <link rel="stylesheet" href="/error-sheet.css">
     <link rel="icon" href="/xmark-solid.svg">
+    <script src="error.js" defer></script>
 </head>
 <body>
     <div class="vert-ctnr full-size">
-        <div class="error-num" th:text="${httpstatus}"></div>
-        <h3 class="error-heading" th:text="${exception}"></h3>
+        <div class="error-num" th:text="${httpstatus == null} ? '404' : ${httpstatus}"></div>
+
+        <h3 class="error-heading" th:text="${exception == null} ? 'Page not found.' : ${exception}"></h3>
+        <h4 class="error-subheading" th:if="${moreDetails != null}" th:text="${moreDetails}"></h4>
 
         <div class="error-url">
-            <a th:text="${url}" th:href="${url}"></a>
+            <a th:href="${url}" th:if="${url != null}" th:text="${url}"></a>
         </div>
-        <img th:src="${img}" class="error-img">
+        <img th:src="${img == null} ? '/warning.png' : ${img}"  class="error-img">
     </div>
 </body>
 </html>

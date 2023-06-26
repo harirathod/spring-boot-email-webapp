@@ -18,16 +18,16 @@
                 <div class="vert-ctnr">
                     <div class="form-row">
                         <label>From:</label>
-                        <input th:errorclass="error-input" class="clickable" type="text" th:field="${email.from}">
+                        <input th:errorclass="error-input" class="clickable" type="text" th:field="${email.sender}">
                     </div>
-                    <div th:errorclass="error" th:if="${#fields.hasErrors('from')}" th:errors="${email.from}"></div>
+                    <div th:errorclass="error" th:if="${#fields.hasErrors('sender')}" th:errors="${email.sender}"></div>
                 </div>
                 <div class="vert-ctnr">
                     <div class="form-row">
                         <label>To:</label>
-                        <input th:errorclass="error-input" class="clickable" type="text" th:field="${email.to}">
+                        <input th:errorclass="error-input" class="clickable" type="text" th:field="${email.recipient}">
                     </div>
-                    <div th:errorclass="error" th:if="${#fields.hasErrors('to')}" th:errors="${email.to}"></div>
+                    <div th:errorclass="error" th:if="${#fields.hasErrors('recipient')}" th:errors="${email.recipient}"></div>
                 </div>
             </div>
             <div class="horiz-ctnr">
@@ -81,6 +81,7 @@
             </div>
             <button class="submit-button clickable" type="submit">Submit</button>
         </form>
+        <div>Click here to view the most recent emails sent.</div>
     </div>
 
 </body>

@@ -25,7 +25,6 @@ public class GlobalExceptionHandler
      * @return The ModelAndView object representing the HTML 'error' page.
      */
     @ExceptionHandler(MessagingException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ModelAndView handleMessagingException(HttpServletRequest request, MessagingException exception)
     {
         // Use the HTML page 'error'.
@@ -33,6 +32,7 @@ public class GlobalExceptionHandler
 
         // Add the exception and Http request to the model, for more details.
         modelAndView.addObject("exception", exception.getMessage());
+        modelAndView.addObject("moreDetails", exception.getNextException() != null ? exception.getNextException().getMessage() : "oo");
         modelAndView.addObject("url", request.getRequestURL().toString());
         modelAndView.addObject("httpstatus", 400);
         modelAndView.addObject("img", "/warning.png");

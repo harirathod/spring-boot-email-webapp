@@ -37,6 +37,11 @@ body {
     text-align: center;
 }
 
+.error-subheading {
+    text-align: center;
+    color: #fc941c;
+}
+
 .error-url {
     margin-top: 30px;
 }
