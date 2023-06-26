@@ -1,8 +1,8 @@
-var x = document.querySelector('.error-url > a');
-if (x === null) {
-    var div = document.querySelector(".error-url");
-    var newNode = document.createElement('a');
-    newNode.text = window.location.href;
-    newNode.href = window.location.href;
-    div.appendChild(newNode);
+var url = document.querySelector('.error-url > a');
+if (url === null) {
+    var urlContainer = document.querySelector(".error-url");
+    var newUrl = document.createElement('a');
+    newUrl.text = window.location.href;
+    newUrl.href = window.location.href;
+    urlContainer.appendChild(newUrl);
 }
