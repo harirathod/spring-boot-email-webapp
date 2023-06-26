@@ -5,6 +5,7 @@
     <title th:text="#{app.name}"></title>
     <link rel="stylesheet" href="/email-sheet.css">
     <link rel="icon" href="/paper-plane-regular.svg">
+    <script src="email.js" defer></script>
 </head>
 <body>
     <div class="vert-ctnr">
@@ -81,7 +82,8 @@
             </div>
             <button class="submit-button clickable" type="submit">Submit</button>
         </form>
-        <div>Click here to view the most recent emails sent.</div>
+        <button class="view-recent-btn">Click here to view the most recent emails sent.</button>
+        <div class="recent-emails-ctnr"></div>
     </div>
 
 </body>

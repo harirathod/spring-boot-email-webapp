@@ -1,6 +1,7 @@
 package com.web.webapp;
 
 import jakarta.mail.MessagingException;
+
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 
 /**
@@ -18,6 +22,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class EmailController
 {
+    // The repository for storing emails.
+    private EmailRepository emailRepository;
+
+    public EmailController(EmailRepository emailRepository)
+    {
+        this.emailRepository = emailRepository;
+    }
     /**
      * Returns the HTML page 'send-email' when the url request for '/sendEmail' is made.
      * @param model The model.
@@ -46,9 +57,21 @@ public class EmailController
         }
         try {
             EmailService.sendEmail(email);
+            emailRepository.save(email);
         } catch (MessagingException e) {
-            throw new MessagingException("There was an issue with sending your email. Were the parameters valid?");
+            throw new MessagingException("There was an issue with sending your email. Were the parameters valid?", e);
         }
         return "redirect:/";
+    }
+
+    /**
+     * Returns the list of all emails stored (i.e., the emails sent prior).
+     * @return A list of all emails being stored.
+     */
+    @GetMapping("/data")
+    @ResponseBody
+    public List<Email> getAllEmails()
+    {
+        return emailRepository.findAll();
     }
 }
