@@ -1,5 +1,6 @@
 package com.web.webapp;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
@@ -9,16 +10,21 @@ import org.hibernate.validator.constraints.Length;
  * @version 2023.06.19
  * @author hari_rathod
  */
+@Entity
 public class Email
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
     // We have to use the full path name for @Email, as the containing class is also called Email.
     @NotBlank(message = "Cannot be blank.")
     @jakarta.validation.constraints.Email(message = "Must be an email.")
-    private String from;
+    private String sender;
 
     @NotBlank(message = "Cannot be blank.")
     @jakarta.validation.constraints.Email(message = "Must be an email.")
-    private String to;
+    private String recipient;
 
     @NotBlank(message = "Subject of the email cannot be empty.")
     @Length(max = 78)
@@ -33,20 +39,23 @@ public class Email
     @NotBlank(message = "Port must be provided.")
     private String port;
 
+    // Username and password should not be stored, hence they are transient.
+    @Transient
     @NotBlank(message = "Username is required for validation.")
     private String username;
 
+    @Transient
     @NotBlank(message = "Password is required for validation.")
     private String password;
 
-    public String getFrom()
+    public String getSender()
     {
-        return from;
+        return sender;
     }
 
-    public String getTo()
+    public String getRecipient()
     {
-        return to;
+        return recipient;
     }
 
     public String getSubject()
@@ -79,14 +88,18 @@ public class Email
         return password;
     }
 
-    public void setTo(String to)
-    {
-        this.to = to;
+    public long getId() {
+        return id;
     }
 
-    public void setFrom(String from)
+    public void setRecipient(String recipient)
     {
-        this.from = from;
+        this.recipient = recipient;
+    }
+
+    public void setSender(String sender)
+    {
+        this.sender = sender;
     }
 
     public void setSubject(String subject)
@@ -119,10 +132,15 @@ public class Email
         this.username = username;
     }
 
+    public void setId(long id)
+    {
+        this.id = id;
+    }
+
     public String toString()
     {
-        return "From: " + from + "\n"
-                + "To: " + to + "\n"
+        return "From: " + sender + "\n"
+                + "To: " + recipient + "\n"
                 + "Content: " + content;
     }
 }

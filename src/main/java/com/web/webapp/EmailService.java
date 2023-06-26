@@ -3,8 +3,6 @@ package com.web.webapp;
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -22,7 +20,7 @@ public class EmailService
     public static void sendEmail(Email email) throws MessagingException
     {
         Message m = EmailService.getMessageForSession(email.getHost(), email.getPort());
-        EmailService.prepareMessageSenders(m, email.getFrom(), email.getTo());
+        EmailService.prepareMessageSenders(m, email.getSender(), email.getRecipient());
         EmailService.addMessageContent(m, email.getSubject(), email.getContent());
         EmailService.sendMessage(m, email.getUsername(), email.getPassword());
     }
