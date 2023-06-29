@@ -147,3 +147,38 @@ input, textarea {
     grid-column-end: span 6;
     text-align: center;
 }
+
+.recent-emails-ctnr {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+}
+
+.email-ctnr {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.sender-recipient-ctnr {
+    font-size: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.sender-recipient-ctnr > div {
+    padding: 8px;
+    text-align: center;
+    opacity: 80%;
+}
+
+.content-ctnr {
+    padding: 8px;
+    border: 1px solid black;
+}
+
+
+
