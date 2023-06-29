@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
+import java.time.LocalDateTime;
+
 /**
  * Class defining an Email object.
  * Provides methods for accessing and modifying host, port, sender, recipient, content, subject, username, and password.
@@ -16,6 +18,8 @@ public class Email
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    private LocalDateTime timestamp;
 
     // We have to use the full path name for @Email, as the containing class is also called Email.
     @NotBlank(message = "Cannot be blank.")
@@ -88,10 +92,6 @@ public class Email
         return password;
     }
 
-    public long getId() {
-        return id;
-    }
-
     public void setRecipient(String recipient)
     {
         this.recipient = recipient;
@@ -132,11 +132,20 @@ public class Email
         this.username = username;
     }
 
-    public void setId(long id)
+    /**
+     * Before the entity is written / persisted, set the timestamp of the email.
+     */
+    @PrePersist
+    public void setTimestamp()
     {
-        this.id = id;
+        timestamp = LocalDateTime.now();
     }
 
+    /**
+     * Gets the string format of the email. This consists of the sender, the recipient, and the content of the email.
+     * @return The string format of the email.
+     */
+    @Override
     public String toString()
     {
         return "From: " + sender + "\n"
