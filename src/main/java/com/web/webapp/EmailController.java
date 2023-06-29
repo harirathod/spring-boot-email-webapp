@@ -3,6 +3,7 @@ package com.web.webapp;
 import jakarta.mail.MessagingException;
 
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -72,6 +73,8 @@ public class EmailController
     @ResponseBody
     public List<Email> getAllEmails()
     {
-        return emailRepository.findAll();
+        // We use this 'Sort.by' rather than specifying a custom query in EmailRepository, in order to decouple
+        // the database from the custom query. E.g., if we change the database, the custom query might not work anymore.
+        return emailRepository.findAll(Sort.by(Sort.Direction.DESC, "timestamp"));
     }
 }
