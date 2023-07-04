@@ -1,9 +1,9 @@
-# 🌱 Spring Boot Webapp
+# 🌱 Spring Boot Email Service
 
 ### Overview
-- A web application, providing a basic email service.   
+- A web application, providing a basic service for sending emails.   
 - Created using Java, Spring Boot and Thymeleaf.   
-- Demonsrates continued enthusiam to learn modern technologies.
+- Demonstrates continued enthusiasm to learn modern technologies.
 
 ### Project Status
 - In progress.
