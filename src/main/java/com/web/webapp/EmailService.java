@@ -33,6 +33,7 @@ public class EmailService
     private static Message getMessageForSession(String host, String port)
     {
         Properties properties = new Properties();
+        // Add some default properties. We do not use SSL by default.
         properties.put("mail.smtp.host", host);
         properties.put("mail.smtp.auth", true);
         properties.put("mail.smtp.port", port);
