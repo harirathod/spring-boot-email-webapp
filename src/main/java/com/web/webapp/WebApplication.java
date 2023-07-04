@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @SpringBootApplication
-public class WebApplication {
-
-	public static void main(String[] args) {
+public class WebApplication
+{
+	/**
+	 * The entry point into the application.
+	 * @param args Optional arguments. As of now, they do nothing.
+	 */
+	public static void main(String[] args)
+	{
 		SpringApplication.run(WebApplication.class, args);
 	}
 }
