@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
  * @author hari_rathod
  */
 @Configuration
+@PropertySource("classpath:database.properties")
 public class WebConfig
 {
     /**
