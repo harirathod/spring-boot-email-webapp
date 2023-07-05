@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Class defining an Email object.
@@ -92,9 +93,10 @@ public class Email
         return password;
     }
 
-    public LocalDateTime getTimestamp()
+    public String getTimestamp()
     {
-        return timestamp.minusNanos(timestamp.getNano());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E M y, HH:mm:ss");
+        return timestamp.format(formatter);
     }
 
     public void setRecipient(String recipient)
