@@ -92,6 +92,11 @@ public class Email
         return password;
     }
 
+    public LocalDateTime getTimestamp()
+    {
+        return timestamp.minusNanos(timestamp.getNano());
+    }
+
     public void setRecipient(String recipient)
     {
         this.recipient = recipient;

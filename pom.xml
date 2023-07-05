@@ -51,6 +51,10 @@
 			<version>42.5.4</version>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>jakarta.mail</groupId>
+			<artifactId>jakarta.mail-api</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

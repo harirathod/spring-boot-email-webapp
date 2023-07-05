@@ -38,9 +38,13 @@ function displayInDocument(arrayOfEmails, nameOfHtmlContainer) {
 
         var container2 = document.createElement('div');
         container2.className = "content-ctnr";
-        container2.textContent = `\"${arrayOfEmails[i].content}\"`;
+        container2.textContent = `"${arrayOfEmails[i].content}"`;
 
-        email.replaceChildren(container1, container2);
+        var container3 = document.createElement('div');
+        container3.className = "timestamp-ctnr";
+        container3.textContent = `${arrayOfEmails[i].timestamp}`;
+
+        email.replaceChildren(container1, container2, container3);
         container.appendChild(email);
     }
 }
