@@ -95,7 +95,8 @@ public class Email
 
     public String getTimestamp()
     {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E M y, HH:mm:ss");
+        // TODO: If we want zone information, a ZonedDateTime is needed.
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d MMMM, y, HH:mm:ss");
         return timestamp.format(formatter);
     }
 
