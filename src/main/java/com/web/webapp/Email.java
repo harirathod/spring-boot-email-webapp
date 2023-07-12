@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -20,7 +22,7 @@ public class Email
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private LocalDateTime timestamp;
+    private ZonedDateTime timestamp;
 
     // We have to use the full path name for @Email, as the containing class is also called Email.
     @NotBlank(message = "Cannot be blank.")
@@ -95,9 +97,9 @@ public class Email
 
     public String getTimestamp()
     {
-        // TODO: If we want zone information, a ZonedDateTime is needed.
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d MMMM, y, HH:mm:ss");
-        return timestamp.format(formatter);
+        ZonedDateTime timestampWithZone = timestamp.withZoneSameInstant(ZoneId.systemDefault());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d MMMM, y, HH:mm:ss z");
+        return timestampWithZone.format(formatter);
     }
 
     public void setRecipient(String recipient)
@@ -146,7 +148,7 @@ public class Email
     @PrePersist
     public void setTimestamp()
     {
-        timestamp = LocalDateTime.now();
+        timestamp = ZonedDateTime.now();
     }
 
     /**
