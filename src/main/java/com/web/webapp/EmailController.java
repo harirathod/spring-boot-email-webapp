@@ -54,7 +54,7 @@ public class EmailController
     public String sendEmail(@Valid @ModelAttribute("email") Email email, BindingResult errors, Model model) throws MessagingException {
         // If there were any errors, do not send the email. Display the email form again.
         if (errors.hasErrors()) {
-            return "send-Email";
+            return "send-email";
         }
         try {
             EmailService.sendEmail(email);

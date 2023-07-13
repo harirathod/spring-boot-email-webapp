@@ -25,15 +25,18 @@ body {
 }
 
 .error-num {
-    color: #fc941c;
+    background: linear-gradient(to right, #ff4081, #f49A40);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
     font-size: 8em;
     font-weight: bolder;
-
 }
 
 .error-heading {
     margin: 10px 0 0 0;
-    color: #fc941c;
+    background: linear-gradient(to right, #ff4081, #f49A40);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
     text-align: center;
 }
 

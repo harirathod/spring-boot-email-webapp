@@ -29,7 +29,7 @@ public class GlobalExceptionHandler
     {
         // Use the HTML page 'error'.
         ModelAndView modelAndView = new ModelAndView("error");
-
+        
         // Add the exception and Http request to the model, for more details.
         modelAndView.addObject("exception", exception.getMessage());
         modelAndView.addObject("moreDetails", exception.getNextException() != null ? exception.getNextException().getMessage() : "oo");
