@@ -19,9 +19,12 @@ public class ErrorController {
     @GetMapping("/error")
     public String handleError(HttpServletResponse response)
     {
-        // TODO: (Potentially - time permitting) add separate error pages for 404, 500, etc.
-        // The error code should not be set here yet. This is a generic error page.
+        // Set a standard HTTP response code of 404. If other classes want to use a different code, then they can do so, and it will overwrite this.
+        response.setStatus(404);
         return "error";
+
+        // TODO: (Potentially - time permitting) add separate error pages for 404, 500, etc.
     }
 
 }
+
