@@ -24,12 +24,13 @@ public class GlobalExceptionHandler
      * @param request The http request made when this exception was thrown.
      * @return The ModelAndView object representing the HTML 'error' page.
      */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MessagingException.class)
     public ModelAndView handleMessagingException(HttpServletRequest request, MessagingException exception)
     {
         // Use the HTML page 'error'.
         ModelAndView modelAndView = new ModelAndView("error");
-        
+
         // Add the exception and Http request to the model, for more details.
         modelAndView.addObject("exception", exception.getMessage());
         modelAndView.addObject("moreDetails", exception.getNextException() != null ? exception.getNextException().getMessage() : "oo");

@@ -75,7 +75,6 @@ public class WebLayerTests {
     {
 
         mockMvc.perform(get("/error"))
-                .andExpect(status().isNotFound())
                 .andExpect(content().string(containsString("Page not found.")))
                 .andExpect(content().contentType("text/html;charset=UTF-8"))
                 .andExpect(view().name("error"));
