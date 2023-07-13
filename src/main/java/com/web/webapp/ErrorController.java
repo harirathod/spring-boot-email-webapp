@@ -1,8 +1,10 @@
 package com.web.webapp;
 
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Class defining when error pages should be displayed.
@@ -17,10 +19,9 @@ public class ErrorController {
      * @return The error.html page.
      */
     @GetMapping("/error")
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleError(HttpServletResponse response)
     {
-        // Set a standard HTTP response code of 404. If other classes want to use a different code, then they can do so, and it will overwrite this.
-        response.setStatus(404);
         return "error";
 
         // TODO: (Potentially - time permitting) add separate error pages for 404, 500, etc.
