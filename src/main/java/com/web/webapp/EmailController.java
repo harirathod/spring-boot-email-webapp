@@ -72,6 +72,6 @@ public class EmailController
     {
         // We use this 'Sort.by' rather than specifying a custom query in EmailRepository, in order to decouple
         // the database from the custom query. E.g., if we change the database, the custom query might not work anymore.
-        return emailRepository.findAll(Sort.by(Sort.Direction.DESC, "timestamp"));
+        return emailRepository.findAllSortedByTimestamp();
     }
 }
