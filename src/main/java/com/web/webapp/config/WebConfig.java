@@ -14,7 +14,6 @@ import org.springframework.context.support.ResourceBundleMessageSource;
  * @author hari_rathod
  */
 @Configuration
-@PropertySource("classpath:database.properties")
 public class WebConfig
 {
     /**
