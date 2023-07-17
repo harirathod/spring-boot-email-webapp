@@ -1,9 +1,9 @@
 package com.web.webapp;
 
+import com.web.webapp.repository.EmailRepository;
 import jakarta.mail.MessagingException;
 
 import jakarta.validation.Valid;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,7 +54,7 @@ public class EmailController
             return "send-email";
         }
         try {
-            EmailService.sendEmail(email);
+            EmailSender.sendEmail(email);
             emailRepository.save(email);
         } catch (MessagingException e) {
             throw new MessagingException("There was an issue with sending your email. Were the parameters valid?", e);

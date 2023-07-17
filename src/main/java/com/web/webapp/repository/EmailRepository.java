@@ -1,5 +1,6 @@
-package com.web.webapp;
+package com.web.webapp.repository;
 
+import com.web.webapp.Email;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,7 +17,8 @@ public interface EmailRepository extends JpaRepository<Email, Long>
      * Gets a list of all emails, sorted in descending timestamp order.
      * @return A list of all emails, sorted in descending timestamp order.
      */
-    default List<Email> findAllSortedByTimestamp() {
+    default List<Email> findAllSortedByTimestamp()
+    {
         return this.findAll(Sort.by(Sort.Direction.DESC, "timestamp"));
     }
 }

@@ -9,7 +9,7 @@ import java.util.Properties;
  * Class for sending emails between users. If the email service requires two-factor authentication, the user
  * should use an 'app password' (like <a href="https://myaccount.google.com/apppasswords">Google app password</a> for Gmail, or a Microsoft app password for Outlook).
  */
-public class EmailService
+public class EmailSender
 {
     /**
      * Sends an email. Combines getMessageForSession, prepareMessageSenders, addMessageContent, and
@@ -19,10 +19,10 @@ public class EmailService
      */
     public static void sendEmail(Email email) throws MessagingException
     {
-        Message m = EmailService.getMessageForSession(email.getHost(), email.getPort());
-        EmailService.prepareMessageSenders(m, email.getSender(), email.getRecipient());
-        EmailService.addMessageContent(m, email.getSubject(), email.getContent());
-        EmailService.sendMessage(m, email.getUsername(), email.getPassword());
+        Message m = EmailSender.getMessageForSession(email.getHost(), email.getPort());
+        EmailSender.prepareMessageSenders(m, email.getSender(), email.getRecipient());
+        EmailSender.addMessageContent(m, email.getSubject(), email.getContent());
+        EmailSender.sendMessage(m, email.getUsername(), email.getPassword());
     }
 
     /**
