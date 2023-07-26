@@ -102,44 +102,52 @@ public class Email
         return timestampWithZone.format(formatter);
     }
 
-    public void setRecipient(String recipient)
+    public Email setRecipient(String recipient)
     {
         this.recipient = recipient;
+        return this;
     }
 
-    public void setSender(String sender)
+    public Email setSender(String sender)
     {
         this.sender = sender;
+        return this;
     }
 
-    public void setSubject(String subject)
+    public Email setSubject(String subject)
     {
         this.subject = subject;
+        return this;
     }
 
-    public void setContent(String content)
+    public Email setContent(String content)
     {
         this.content = content;
+        return this;
     }
 
-    public void setHost(String host)
+    public Email setHost(String host)
     {
         this.host = host;
+        return this;
     }
 
-    public void setPort(String port)
+    public Email setPort(String port)
     {
         this.port = port;
+        return this;
     }
 
-    public void setPassword(String password)
+    public Email setPassword(String password)
     {
         this.password = password;
+        return this;
     }
 
-    public void setUsername(String username)
+    public Email setUsername(String username)
     {
         this.username = username;
+        return this;
     }
 
     /**
