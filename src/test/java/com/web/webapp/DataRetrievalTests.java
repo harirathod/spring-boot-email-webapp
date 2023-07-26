@@ -123,6 +123,18 @@ public class DataRetrievalTests
     @Test
     public void testFindAllSortedByTimestamp()
     {
+        emailRepository.save(email2);
+        emailRepository.save(email1);
+        emailRepository.save(email3);
 
+        testEntityManager.flush();
+        testEntityManager.clear();
+
+        assertEquals("content3", emailRepository.findAllSortedByTimestamp().get(0).getContent());
+        assertEquals("content1", emailRepository.findAllSortedByTimestamp().get(1).getContent());
+        assertEquals("content2", emailRepository.findAllSortedByTimestamp().get(2).getContent());
+
+        // Check that the test can fail.
+        assertNotEquals("content1", emailRepository.findAllSortedByTimestamp().get(2).getContent());
     }
 }
