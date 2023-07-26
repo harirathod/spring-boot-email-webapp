@@ -23,8 +23,11 @@ public class DataRetrievalTests
     @Autowired
     private TestEntityManager testEntityManager;
 
+    /**
+     * Test that the password and username are not saved to the database (checking security, essentially).
+     */
     @Test
-    public void testPrivacyOfCredentials() throws MessagingException {
+    public void testPrivacyOfCredentials() {
         Email email = new Email();
         email.setUsername("my_username")
                 .setPassword("secret_password")
@@ -36,6 +39,7 @@ public class DataRetrievalTests
                 .setSubject("subject");
 
         emailRepository.save(email);
+        // Need to flush and clear.
         testEntityManager.flush();
         testEntityManager.clear();
         Email retrievedEmail = emailRepository.findAll().get(0);
