@@ -101,6 +101,11 @@ public class Email
         return timestampWithZone.format(formatter);
     }
 
+    public ZonedDateTime getUnformattedTimestamp()
+    {
+        return timestamp;
+    }
+
     public Email setRecipient(String recipient)
     {
         this.recipient = recipient;
