@@ -65,6 +65,8 @@ public class WebLayerTests {
                 .param("content", "unknown"))
                 .andExpect(view().name("error"))
                 .andExpect(status().isBadRequest());
+
+        // We cannot test valid email sending situations, as that relies on credentials.
     }
 
     /**
