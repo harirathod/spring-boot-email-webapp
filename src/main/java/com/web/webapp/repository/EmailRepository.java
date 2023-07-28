@@ -1,6 +1,6 @@
 package com.web.webapp.repository;
 
-import com.web.webapp.Email;
+import com.web.webapp.model.Email;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 

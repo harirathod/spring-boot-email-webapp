@@ -1,6 +1,7 @@
 package com.web.webapp;
 
 import com.web.webapp.config.WebConfig;
+import com.web.webapp.model.Email;
 import com.web.webapp.repository.EmailRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

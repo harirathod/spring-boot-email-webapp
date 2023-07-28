@@ -1,5 +1,6 @@
 package com.web.webapp;
 
+import com.web.webapp.model.Email;
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
 

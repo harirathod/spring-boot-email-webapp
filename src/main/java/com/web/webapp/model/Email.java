@@ -1,4 +1,4 @@
-package com.web.webapp;
+package com.web.webapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

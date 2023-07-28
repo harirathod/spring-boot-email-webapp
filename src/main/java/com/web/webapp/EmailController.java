@@ -1,5 +1,6 @@
 package com.web.webapp;
 
+import com.web.webapp.model.Email;
 import com.web.webapp.repository.EmailRepository;
 import jakarta.mail.MessagingException;
 
@@ -59,7 +60,7 @@ public class EmailController
         } catch (MessagingException e) {
             throw new MessagingException("There was an issue with sending your email. Were the parameters valid?", e);
         }
-        return "redirect:/";
+        return "success";
     }
 
     /**
