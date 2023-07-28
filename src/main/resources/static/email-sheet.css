@@ -36,7 +36,7 @@
 }
 
 
-form > *:not(.submit-button) {
+form > *:not(.submit-btn) {
     width: 100%;
 }
 
@@ -60,18 +60,14 @@ input, textarea {
     border-radius: 5px;
 }
 
-.clickable:focus {
+.clickable:focus, .clickable:hover {
     border: 2px solid rgba(0, 0, 0, 0.6);
 }
 
-.submit-button {
+.submit-btn {
     align-self: flex-end;
-    background-color: #FAFAF5;
 }
 
-.submit-button:hover {
-    background-color: #fafacd;
-}
 
 .error {
     font-weight: bold;
@@ -121,11 +117,6 @@ input, textarea {
 .tooltip:hover .tooltip-tr {
     visibility: visible;
     opacity: 1;
-}
-
-.link {
-    color: black;
-    font-weight: 600;
 }
 
 .header-ctnr {
@@ -178,8 +169,8 @@ input, textarea {
 
 .content-ctnr {
     padding: 5px;
-    border: 1px solid black;
-    border-radius: 8px;
+    border: 2px solid black;
+    border-radius: 6px;
 }
 
 .timestamp-ctnr {
@@ -189,5 +180,64 @@ input, textarea {
     text-align: right;
 }
 
+.gradient-text {
+    background: linear-gradient(to right, #ff4081, #f49A40);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
 
+a.gradient-text {
+    text-decoration: none;
+    position: relative;
+}
+
+a.gradient-text::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  background: linear-gradient(to right, #ff4081, #f49A40);
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 0.3s;
+}
+
+a.gradient-text:hover::before {
+  transform: scaleX(1);
+}
+
+.submit-btn, .view-recent-btn {
+    background: none;
+}
+
+.view-recent-btn {
+    margin-top: 20px;
+}
+
+.fill {
+    position: relative;
+    transition: 0.05s ease-in;
+    z-index: 1;
+}
+
+.fill:hover {
+    color: whitesmoke;
+}
+
+.fill::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 100%;
+    content: "";
+    background: #3e3e3e;
+    transition: top 0.2s;
+    z-index: -1;
+}
+
+.fill:hover::before {
+    top: 0;
+}
 

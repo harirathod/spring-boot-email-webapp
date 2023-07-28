@@ -80,9 +80,9 @@
                 </div>
                 <div th:errorclass="error" th:if="${#fields.hasErrors('content')}" th:errors="${email.content}"></div>
             </div>
-            <button class="submit-button clickable" type="submit">Submit</button>
+            <button class="submit-btn clickable fill" type="submit">Submit</button>
         </form>
-        <button class="view-recent-btn">Click here to view the most recent emails sent.</button>
+        <button class="view-recent-btn clickable fill">Click here to view the most recent emails sent.</button>
         <div class="recent-emails-ctnr"></div>
     </div>
 

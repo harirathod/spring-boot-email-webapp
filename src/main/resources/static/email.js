@@ -37,7 +37,9 @@ function displayInDocument(arrayOfEmails, nameOfHtmlContainer) {
         container1.replaceChildren(from, arrow, to);
 
         var container2 = document.createElement('div');
-        container2.className = "content-ctnr";
+
+        container2.classList.add("fill");
+        container2.classList.add("content-ctnr");
         container2.textContent = `"${arrayOfEmails[i].content}"`;
 
         var container3 = document.createElement('div');
