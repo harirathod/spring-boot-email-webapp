@@ -223,6 +223,7 @@ a.gradient-text:hover::before {
 
 .fill:hover {
     color: whitesmoke;
+    border-color: #3e3e3e;
 }
 
 .fill::before {
