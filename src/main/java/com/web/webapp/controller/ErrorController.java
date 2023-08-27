@@ -1,4 +1,4 @@
-package com.web.webapp;
+package com.web.webapp.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,6 @@ public class ErrorController {
     public String handleError(HttpServletResponse response)
     {
         return "error";
-
         // TODO: (Potentially - time permitting) add separate error pages for 404, 500, etc.
     }
 

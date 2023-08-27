@@ -1,6 +1,8 @@
 package com.web.webapp;
 
 import com.web.webapp.config.WebConfig;
+import com.web.webapp.controller.EmailController;
+import com.web.webapp.controller.ErrorController;
 import com.web.webapp.repository.EmailRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
-package com.web.webapp;
+package com.web.webapp.controller;
 
+import com.web.webapp.EmailSender;
 import com.web.webapp.model.Email;
 import com.web.webapp.repository.EmailRepository;
 import jakarta.mail.MessagingException;
@@ -67,7 +68,7 @@ public class EmailController
      * Returns the list of all emails stored (i.e., the emails sent prior).
      * @return A list of all emails being stored.
      */
-    @GetMapping("/data")
+    @GetMapping("/sendEmail/data")
     @ResponseBody
     public List<Email> getAllEmails()
     {

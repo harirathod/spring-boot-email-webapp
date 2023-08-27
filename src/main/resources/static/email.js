@@ -2,7 +2,7 @@
 
 function getRecentEmails(callback) {
     var xhp = new XMLHttpRequest();
-    xhp.open("GET", "/data", true);
+    xhp.open("GET", "/sendEmail/data", true);
     xhp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);
