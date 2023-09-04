@@ -36,10 +36,24 @@ public class WebConfig {
     /**
      * Configure which paths do and do not require authentication.
      *
-     * @return A SecurityFilterChain which contains the HttpSecurity configuration.
+     * @param httpSecurity Allows specification of how requests are secured using the builder pattern.
+     * @return A SecurityFilterChain, which is a collection of servlet filters responsible for different aspects of security.
      */
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
-        return null;
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        // Define a set of filters for the HttpSecurity.
+        httpSecurity
+                /* authoriseHttpRequests returns an AuthorizedUrl, which defines the secured and unsecured URLs.
+                 * The "/" URL should be unsecured. All other URLs should be secured.
+                 */
+                .authorizeHttpRequests((requests) ->
+                        requests.requestMatchers("/").permitAll()
+                                .anyRequest().authenticated())
+                // The form login page, at "/login", should be accessible by all users.
+                .formLogin((login) -> login.loginPage("/login").permitAll())
+                // All users should have access to the logout URL.
+                .logout((logout) -> logout.permitAll());
+
+        return httpSecurity.build();
     }
 }
