@@ -3,7 +3,11 @@ package com.web.webapp.config;
 
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.http.HttpRequest;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 
 /**
  * Configuration class containing configuration beans. Ensures the application has access to required resources.
@@ -12,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
  */
 @Configuration
 @PropertySource("classpath:database.properties")
+@EnableWebSecurity
 public class WebConfig {
     /**
      * This method identifies the application.properties file, allowing the messages inside the
@@ -26,5 +31,15 @@ public class WebConfig {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("application");
         return messageSource;
+    }
+
+    /**
+     * Configure which paths do and do not require authentication.
+     *
+     * @return A SecurityFilterChain which contains the HttpSecurity configuration.
+     */
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
+        return null;
     }
 }
