@@ -68,7 +68,6 @@ input, textarea {
     align-self: flex-end;
 }
 
-
 .error {
     font-weight: bold;
     font-size: 75%;
@@ -184,6 +183,11 @@ input, textarea {
     background: linear-gradient(to right, #ff4081, #f49A40);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+}
+
+.bright-color {
+    text-align: center;
+    color: #fc941c;
 }
 
 a.gradient-text {

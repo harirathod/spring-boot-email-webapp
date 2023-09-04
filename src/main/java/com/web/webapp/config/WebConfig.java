@@ -50,9 +50,15 @@ public class WebConfig {
                         requests.requestMatchers("/").permitAll()
                                 .anyRequest().authenticated())
                 // The form login page, at "/login", should be accessible by all users.
-                .formLogin((login) -> login.loginPage("/login").permitAll())
+                .formLogin((login) ->
+                        login.loginPage("/login").permitAll()
+                                .failureHandler(((request, response, exception) ->
+                                        response.sendRedirect("/login?failed=true"))))
                 // All users should have access to the logout URL.
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) ->
+                        logout.logoutUrl("/logout").permitAll()
+                                .logoutSuccessHandler(((request, response, authentication) ->
+                                        response.sendRedirect("/login?logout=true"))));
 
         return httpSecurity.build();
     }
