@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{app.name}"></title>
-    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/style-sheet.css">
 </head>
 <body>
 <div class="vert-ctnr">
     <h1 class="header gradient-text" th:text="#{email.success}"></h1>
     <div>Click <a class="gradient-text" href="/"><b>here</b></a> to return to the homepage.</div>
+    <form method="post" th:action="@{/logout}">
+        <button class="clickable submit-btn fill" type="submit">Sign Out</button>
+    </form>
 </div>
 </body>
