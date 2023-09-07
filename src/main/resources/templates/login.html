@@ -7,17 +7,17 @@
 </head>
 <body>
     <div class="vert-ctnr">
-        <h2 th:if="${param.failed}" class="bright-color">
+        <h2 th:if="${param.error}" class="bright-color">
             Could not authenticate user.
         </h2>
         <h2 th:if="${param.logout}" class="bright-color">
             You have been logged out.
         </h2>
-        <form th:action="@{/login}">
+        <form th:action="@{/login}" method="post">
             <div class="vert-ctnr">
-                <label>Username: </label><input placeholder="my_username" type="text" name="username">
-                <label>Password: </label><input placeholder="password123" type="password" name="password">
-                <button class="clickable submit-btn fill" type="submit">Login</button>
+                <label>Username:<input placeholder="my_username" type="text" name="username"></label>
+                <label>Password:<input placeholder="password123" type="password" name="password"></label>
+                <input class="clickable submit-btn fill" type="submit" value="Login" onclick="console.log('hi')">
             </div>
         </form>
         <a class="gradient-text" href="/">Click here to return to the homepage.</a>
