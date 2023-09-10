@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/style-sheet.css">
+    <link type="text/css" rel="stylesheet" href="/css/style-sheet.css">
 </head>
 <body>
     <div class="vert-ctnr">
-        <h2 th:if="${param.error}" class="bright-color">
+        <div class="header-ctnr">
+            <h1 class="header">Log In Page</h1>
+            <a href="/" class="home-btn"><img src="/images/house-chimney-solid.svg"></a>
+            <form method="post" th:action="@{/logout}">
+                <button class="clickable submit-btn fill" type="submit">Sign Out</button>
+            </form>
+        </div>
+        <h2 th:if="${param.error}" class="gradient-text">
             Could not authenticate user.
         </h2>
-        <h2 th:if="${param.logout}" class="bright-color">
+        <h2 th:if="${param.logout}" class="gradient-text">
             You have been logged out.
         </h2>
         <form th:action="@{/login}" method="post">
             <div class="vert-ctnr">
-                <label>Username:<input placeholder="my_username" type="text" name="username"></label>
-                <label>Password:<input placeholder="password123" type="password" name="password"></label>
-                <input class="clickable submit-btn fill" type="submit" value="Login" onclick="console.log('hi')">
+                <div class="horiz-ctnr"><label>Username:</label><input placeholder="my_username" type="text" name="username"></div>
+                <div class="horiz-ctnr"><label>Password:</label><input placeholder="password123" type="password" name="password"></div>
+                <button class="clickable fill" type="submit">Login</button>
             </div>
         </form>
-        <a class="gradient-text" href="/">Click here to return to the homepage.</a>
-    </div>
+        </div>
+
 </body>
 </html>

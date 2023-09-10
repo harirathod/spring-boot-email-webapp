@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{app.name}"></title>
-    <link rel="stylesheet" href="/stylesheet.css">
-    <link rel="icon" href="/paper-plane-regular.svg">
-    <script src="email.js" defer></script>
+    <link type="text/css" rel="stylesheet" href="/css/style-sheet.css">
+    <link rel="icon" href="/images/paper-plane-regular.svg">
+    <script src="/js/email.js" defer></script>
 </head>
 <body>
     <div class="vert-ctnr">
         <div class="header-ctnr">
-            <h1 class="header" th:text="#{email.welcome}">Welcome!</h1>
-            <a href="/" class="home-btn"><img src="/house-chimney-solid.svg"></a>
+            <h1 class="header" th:text="#{email.welcome}"></h1>
+            <a href="/" class="home-btn"><img src="/images/house-chimney-solid.svg"></a>
+            <form method="post" th:action="@{/logout}">
+                <button class="clickable submit-btn fill" type="submit">Sign Out</button>
+            </form>
         </div>
         <p th:text="#{email.description}">Description</p>
         <form action="#" th:action="@{/sendEmail}" method="post" th:object="${email}">

@@ -1,16 +1,34 @@
 package com.web.webapp.config;
 
 
-import org.springframework.context.annotation.*;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.http.HttpRequest;
+import org.springframework.core.env.Environment;
+import org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.server.SecurityWebFilterChain;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Configuration class containing configuration beans. Ensures the application has access to required resources.
+ * Configuration class containing configuration beans for the web layer.
+ * Ensures the application has access to required resources.
+ * No longer any need to extend a class (like WebSecurityConfigurerAdapter) for Spring Security.
  * @version 2023.06.19
  * @author hari_rathod
  */
@@ -51,15 +69,52 @@ public class WebConfig {
                                 .anyRequest().authenticated())
                 // The form login page, at "/login", should be accessible by all users.
                 .formLogin((login) ->
-                        login.loginPage("/login").permitAll()
-                                .failureHandler(((request, response, exception) ->
-                                        response.sendRedirect("/login?failed=true"))))
+                        login.loginPage("/login").permitAll())
                 // All users should have access to the logout URL.
                 .logout((logout) ->
-                        logout.logoutUrl("/logout").permitAll()
-                                .logoutSuccessHandler(((request, response, authentication) ->
-                                        response.sendRedirect("/login?logout=true"))));
-
+                        logout.logoutUrl("/logout").permitAll());
         return httpSecurity.build();
     }
+
+    /**
+     * Configure static resources (JS, CSS) to be ignored by Spring Security.
+     *
+     * @return A WebSecurityCustomizer that customizes the WebSecurity.
+     */
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer()
+    {
+        return (web) -> web.ignoring().requestMatchers("/css/*", "/js/*", "/images/*");
+    }
+
+
+    /**
+     * Defines a single authorised user.
+     *
+     * @param env The Environment that stores the values from the *.properties files. We use this Environment
+     *            to retrieve the username and password, which are stored in database.properties.
+     * @return A UserDetailsService which contains details of authorised users.
+     */
+    @Bean
+    public UserDetailsService userDetailsService(Environment env, PasswordEncoder encoder)
+    {
+        UserDetails user = User.withUsername(env.getProperty("spring.datasource.username"))
+                .password(encoder.encode(env.getProperty("spring.datasource.password")))
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(user);
+    }
+
+    /**
+     * Defines a password encoder.
+     *
+     * @return A PasswordEncoder.
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder()
+    {
+        return new BCryptPasswordEncoder();
+    }
+
 }
