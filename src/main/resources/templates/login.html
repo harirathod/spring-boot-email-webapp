@@ -9,25 +9,32 @@
     <div class="vert-ctnr">
         <div class="header-ctnr">
             <h1 class="header">Log In Page</h1>
-            <a href="/" class="home-btn"><img src="/images/house-chimney-solid.svg"></a>
-            <form method="post" th:action="@{/logout}">
-                <button class="clickable submit-btn fill" type="submit">Sign Out</button>
-            </form>
+            <div class="btns-ctnr">
+                <a href="/" class="home-btn"><img src="/images/house-chimney-solid.svg"></a>
+                <form method="post" th:action="@{/logout}">
+                    <button class="clickable submit-btn fill" type="submit">Sign Out</button>
+                </form>
+            </div>
         </div>
+        <form th:action="@{/login}" method="post">
+            <div class="vert-ctnr">
+                <label class="log-in-page">
+                    Username:
+                    <input type="text" name="username">
+                </label>
+                <label class="log-in-page">
+                    Password:
+                    <input type="password" name="password">
+                </label>
+                <button class="clickable fill" type="submit">Login</button>
+            </div>
+        </form>
         <h2 th:if="${param.error}" class="gradient-text">
             Could not authenticate user.
         </h2>
         <h2 th:if="${param.logout}" class="gradient-text">
             You have been logged out.
         </h2>
-        <form th:action="@{/login}" method="post">
-            <div class="vert-ctnr">
-                <div class="horiz-ctnr"><label>Username:</label><input placeholder="my_username" type="text" name="username"></div>
-                <div class="horiz-ctnr"><label>Password:</label><input placeholder="password123" type="password" name="password"></div>
-                <button class="clickable fill" type="submit">Login</button>
-            </div>
-        </form>
-        </div>
-
+    </div>
 </body>
 </html>

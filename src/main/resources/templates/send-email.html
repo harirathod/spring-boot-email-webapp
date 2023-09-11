@@ -11,10 +11,12 @@
     <div class="vert-ctnr">
         <div class="header-ctnr">
             <h1 class="header" th:text="#{email.welcome}"></h1>
-            <a href="/" class="home-btn"><img src="/images/house-chimney-solid.svg"></a>
-            <form method="post" th:action="@{/logout}">
-                <button class="clickable submit-btn fill" type="submit">Sign Out</button>
-            </form>
+            <div class="btns-ctnr">
+                <a href="/" class="home-btn"><img src="/images/house-chimney-solid.svg"></a>
+                <form method="post" th:action="@{/logout}">
+                    <button class="clickable submit-btn fill" type="submit">Sign Out</button>
+                </form>
+            </div>
         </div>
         <p th:text="#{email.description}">Description</p>
         <form action="#" th:action="@{/sendEmail}" method="post" th:object="${email}">

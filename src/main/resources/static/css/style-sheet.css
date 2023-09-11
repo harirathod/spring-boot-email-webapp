@@ -42,7 +42,6 @@ form > *:not(.submit-btn) {
 }
 
 form {
-    padding-top: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -54,6 +53,17 @@ input, textarea {
     resize: vertical;
 }
 
+label.log-in-page input {
+  margin-left: 10px;
+}
+
+label.log-in-page {
+  display: flex;
+  text-align: right;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 300px;
+}
 
 .clickable {
     border: 2px solid rgba(0, 0, 0, 0.3);
@@ -118,27 +128,31 @@ input, textarea {
     visibility: visible;
     opacity: 1;
 }
+.header {
+    text-align: center;
+    flex-grow: 1;
+}
 
 .header-ctnr {
-    display: grid;
+    display: flex;
     align-items: center;
-
-    grid-template-columns: repeat(12, 1fr) ;
     width: 90vw;
 }
+
+.btns-ctnr {
+    position: absolute;
+    right: 50px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
 .home-btn {
-    grid-column-end: 13;
+    padding-top: 4px;
     background: none;
     cursor: pointer;
     width: 25px;
 }
-
-.header {
-    grid-column-start: 4;
-    grid-column-end: span 6;
-    text-align: center;
-}
-
 .recent-emails-ctnr {
     display: flex;
     flex-direction: column;
