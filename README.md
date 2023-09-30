@@ -1,15 +1,20 @@
-# ✉️️ Spring Boot Email Service
+# 📫 Spring Boot Email Service
 
 ### Overview
-- A web application, providing a basic service for sending emails.   
-- Created using Java and Spring Boot for the back-end.
-- Thymeleaf, JavaScript, HTML and CSS used for the front-end.
+- A web application where users can log in, send basic text emails, and view their recently sent emails.
+- Created using Java and the Spring Boot framework for the back end.
 - Demonstrates continued enthusiasm to learn modern technologies.
 
-### Room for Improvement
-- Currently, the project uses a local PostgreSQL database.
-  - We will look to scale this up to a cloud database, so it can be accessed by people all around the world.
+### Technologies Used
+- Java (with the Spring Boot framework and Spring Security)
+- PostgreSQL
+- Thymeleaf
+- Vanilla JavaScript
+- HTML
+- CSS
 
+### Purpose of Project
+- To build a functional full-stack application with industry technologies & frameworks.
 
 ### Project Status
 - In progress.
