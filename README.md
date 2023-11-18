@@ -9,7 +9,7 @@
 - Java (with the Spring Boot framework and Spring Security)
 - PostgreSQL
 - Thymeleaf
-- Vanilla JavaScript
+- JavaScript
 - HTML
 - CSS
 
